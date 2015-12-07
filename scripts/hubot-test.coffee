@@ -58,6 +58,5 @@ module.exports = (robot) ->
    minute = sleepTime[1].toString()
    new CronJob '0 ' + minute + ' ' + hour + ' * * *', () =>
      robot.send {room: "general"}, "Bye"
-     robot.shutdown()
      setTimeout process.exit, 1000
    , null, true, "Asia/Tokyo"
