@@ -59,4 +59,4 @@ module.exports = (robot) ->
    new CronJob '0 '+ minute + ' ' + hour +' * * *', () =>
      robot.send {room: "general"}, "Bye"
      robot.shutdown()
-  , null, true, "Asia/Tokyo"
+   , null, true, "Asia/Tokyo"
