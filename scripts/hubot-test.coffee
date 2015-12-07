@@ -56,7 +56,7 @@ module.exports = (robot) ->
   if sleepTime.length == 2 && isNaN(sleepTime[0]) == false && isNaN(sleepTime[1]) == false   
    hour = sleepTime[0].toStirng()
    minute = sleepTime[1].toStirng()
-   new CronJob '0 '+ minute + ' ' + hour +' * * *', () =>
+   new CronJob '0 ' + minute + ' ' + hour + ' * * *', () =>
      robot.send {room: "general"}, "Bye"
      robot.shutdown()
    , null, true, "Asia/Tokyo"
