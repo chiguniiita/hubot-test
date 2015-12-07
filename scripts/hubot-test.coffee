@@ -58,9 +58,7 @@ module.exports = (robot) ->
    minute = sleepTime[1].toString()
    new CronJob '0 ' + minute + ' ' + hour + ' * * *', () =>
      robot.send {room: "general"}, "Bye"
-     robot.send {room: "general"}, process.env.HUBOT_HEROKU_KEEPALIVE_INTERVAL.toString()
-     process.env.HUBOT_HEROKU_KEEPALIVE_INTERVAL = 60
-     robot.send {room: "general"}, process.env.HUBOT_HEROKU_KEEPALIVE_INTERVAL.toString()
+     process.env.HUBOT_HEROKU_SLEEP_TIME = 60
      robot.shutdown()
      setTimeout process.exit, 1000
    , null, true, "Asia/Tokyo"
