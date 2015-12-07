@@ -49,3 +49,14 @@ module.exports = (robot) ->
     process._events.SIGTERM = on_sigterm
   else
     process.on 'SIGTERM', on_sigterm
+
+# HUBOT_HEROKU_SLEEP_TIMEにshutdown
+  sleepTime = (process.env.HUBOT_HEROKU_SLEEP_TIME or '').split(':').map (i) -> parseInt i, 10
+  
+  if sleepTime.length == 2 && isNaN(sleepTime[0]) == false && isNaN(sleepTime[1]) == false   
+   hour = sleepTime[0].toStirng()
+   minute = sleepTime[1].toStirng()
+   new CronJob '0 '+ minute + ' ' + hour +' * * *', () =>
+     robot.send {room: "general"}, "Bye"
+     robot.shutdown()
+  , null, true, "Asia/Tokyo"
