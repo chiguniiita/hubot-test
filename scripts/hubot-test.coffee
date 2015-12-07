@@ -57,6 +57,7 @@ module.exports = (robot) ->
    hour = sleepTime[0].toString()
    minute = sleepTime[1].toString()
    new CronJob '0 ' + minute + ' ' + hour + ' * * *', () =>
+     robot.send {room: "general"}, "Bye"
      robot.send {room: "general"}, keepaliveInterval.toString()
      robot.shutdown()
      setTimeout process.exit, 1000
