@@ -11,5 +11,6 @@
   "hubot-shipit",
   "hubot-hello-bye",
   "hubot-channel-created-notify",
-  "hubot-doyoubi"
+  "hubot-doyoubi",
+  "hubot-lgtm"
 ]

@@ -5,6 +5,7 @@
   "author": "chiguniiita <chigu.niii.ta@gmail.com>",
   "description": "A hubot for test.",
   "dependencies": {
+    "cheerio": "^0.19.0",
     "cron": "^1.1.0",
     "hubot": "^2.17.0",
     "hubot-channel-created-notify": "git://github.com/chiguniiita/hubot-channel-created-notify.git",
@@ -15,6 +16,7 @@
     "hubot-hello-bye": "git://github.com/chiguniiita/hubot-hello-bye.git",
     "hubot-help": "^0.1.2",
     "hubot-heroku-keepalive": "^1.0.0",
+    "hubot-lgtm": "git://github.com/chiguniiita/hubot-lgtm.git",
     "hubot-maps": "0.0.2",
     "hubot-pugme": "^0.1.0",
     "hubot-redis-brain": "0.0.3",

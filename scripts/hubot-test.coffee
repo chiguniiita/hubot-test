@@ -10,7 +10,6 @@
 
 CronJob = require('cron').CronJob
 
-
 module.exports = (robot) ->
   robot.respond /HELLO$/i, (res) ->
     res.send 'Hello!'
