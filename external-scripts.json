@@ -10,5 +10,6 @@
   "hubot-rules",
   "hubot-shipit",
   "hubot-hello-bye",
-  "hubot-channel-created-notify"
+  "hubot-channel-created-notify",
+  "hubot-doyoubi"
 ]

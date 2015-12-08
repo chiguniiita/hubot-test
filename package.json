@@ -9,6 +9,7 @@
     "hubot": "^2.17.0",
     "hubot-channel-created-notify": "git://github.com/chiguniiita/hubot-channel-created-notify.git",
     "hubot-diagnostics": "0.0.1",
+    "hubot-doyoubi": "git://github.com/chiguniiita/hubot-doyoubi.git",
     "hubot-google-images": "^0.2.5",
     "hubot-google-translate": "^0.2.0",
     "hubot-hello-bye": "git://github.com/chiguniiita/hubot-hello-bye.git",

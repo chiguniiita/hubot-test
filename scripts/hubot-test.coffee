@@ -20,9 +20,3 @@ module.exports = (robot) ->
     robot.send {room: "general"}, "進捗どうですか"
     robot.send {room: "general"}, "http://41.media.tumblr.com/c4e10b790a638418561ce1281b39d01f/tumblr_mx4txxHqSw1qa8o34o1_400.jpg"
   , null, true, "Asia/Tokyo"
-
-# どようび！
-  new CronJob '0 30 17 * * 5', () =>
-    robot.send {room: "general"}, "どようび！"
-    robot.send {room: "general"}, "https://pbs.twimg.com/profile_images/1102063571/____.jpg"
-  , null, true, "Asia/Tokyo"
