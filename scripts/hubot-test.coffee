@@ -15,20 +15,14 @@ module.exports = (robot) ->
   robot.respond /HELLO$/i, (res) ->
     res.send 'Hello!'
     
-# 新チャネル通知
-  robot.adapter.client?.on? 'raw_message', (msg) ->
-    if msg?.type == 'channel_created'
-      return if typeof robot?.send isnt 'function'
-      robot.send {room: "general"}, "New channel <##{msg.channel.id}> created"
-    
 # 進捗どうですか
-  new CronJob '0 10 16 * * 1-5', () =>
+  new CronJob '0 25 17 * * 1-5', () =>
     robot.send {room: "general"}, "進捗どうですか"
     robot.send {room: "general"}, "http://41.media.tumblr.com/c4e10b790a638418561ce1281b39d01f/tumblr_mx4txxHqSw1qa8o34o1_400.jpg"
   , null, true, "Asia/Tokyo"
 
 # どようび！
-  new CronJob '0 11 16 * * 1-5', () =>
+  new CronJob '0 30 17 * * 5', () =>
     robot.send {room: "general"}, "どようび！"
     robot.send {room: "general"}, "https://pbs.twimg.com/profile_images/1102063571/____.jpg"
   , null, true, "Asia/Tokyo"
