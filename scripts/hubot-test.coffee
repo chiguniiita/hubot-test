@@ -10,6 +10,7 @@
 
 CronJob = require('cron').CronJob
 
+
 module.exports = (robot) ->
   robot.respond /HELLO$/i, (res) ->
     res.send 'Hello!'
@@ -22,43 +23,30 @@ module.exports = (robot) ->
     
 # 進捗どうですか
   new CronJob '0 25 17 * * 1-5', () =>
-    robot.messageRoom "general", "進捗どうですか"
-    robot.messageRoom "general", "http://41.media.tumblr.com/c4e10b790a638418561ce1281b39d01f/tumblr_mx4txxHqSw1qa8o34o1_400.jpg"
+    robot.send {room: "general"}, "進捗どうですか"
+    robot.send {room: "general"}, "http://41.media.tumblr.com/c4e10b790a638418561ce1281b39d01f/tumblr_mx4txxHqSw1qa8o34o1_400.jpg"
   , null, true, "Asia/Tokyo"
 
 # どようび！
   new CronJob '0 30 17 * * 5', () =>
-    robot.messageRoom "general", "どようび！"
-    robot.messageRoom "general", "https://pbs.twimg.com/profile_images/1102063571/____.jpg"
+    robot.send {room: "general"}, "どようび！"
+    robot.send {room: "general"}, "https://pbs.twimg.com/profile_images/1102063571/____.jpg"
   , null, true, "Asia/Tokyo"
 
 # hubot起動終了通知
 # http://shokai.org/blog/archives/10108
   cid = setInterval ->
     return if typeof robot?.send isnt 'function'
-    robot.send {room: "general"}, "ガバリ"
+    robot.send {room: "general"}, "Hello!"
     clearInterval cid
   , 1000
 
   ## 寝た時、通知してからexitする
   on_sigterm = ->
-    robot.send {room: "general"}, 'スヤリ'
+    robot.send {room: "general"}, 'Bye!'
     setTimeout process.exit, 1000
 
   if process._events.SIGTERM?
     process._events.SIGTERM = on_sigterm
   else
     process.on 'SIGTERM', on_sigterm
-
-# HUBOT_HEROKU_SLEEP_TIMEにshutdown
-  sleepTime = (process.env.HUBOT_HEROKU_SLEEP_TIME or '').split(':').map (i) -> parseInt i, 10
-  
-  if sleepTime.length == 2 && isNaN(sleepTime[0]) == false && isNaN(sleepTime[1]) == false   
-   hour = sleepTime[0].toString()
-   minute = sleepTime[1].toString()
-   new CronJob '0 ' + minute + ' ' + hour + ' * * *', () =>
-     robot.send {room: "general"}, "Bye"
-     process.env.HUBOT_HEROKU_SLEEP_TIME = 60
-     robot.shutdown()
-     setTimeout process.exit, 1000
-   , null, true, "Asia/Tokyo"
